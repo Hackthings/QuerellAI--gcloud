@@ -29,8 +29,6 @@ Welcome to ReactNode AI Interviewer, an advanced chat bot powered by the formida
 
 Follow these steps to get started with ReactNode AI Interviewer:
 
-Follow these steps to get started with ReactNode AI Interviewer:
-
 ```bash
 npm install
 cd backend
