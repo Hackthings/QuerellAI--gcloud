@@ -57,6 +57,10 @@ We welcome contributions from the community! To contribute to ReactNode AI Inter
 
 If you encounter any issues or have questions, feel free to [open an issue](https://github.com/your-username/reactnode-ai-interviewer/issues). We'll be happy to assist you!
 
+## Future Features Plans
+
+- we are planning to add a feature of uploading resume and taking interviews based on it.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
