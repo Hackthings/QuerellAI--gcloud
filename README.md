@@ -39,6 +39,10 @@ npm start
 cd ..
 npm run dev
 ```
+- make sure to go to /pdf end point weather it is in localhost or vercel
+- then input admin password as "AdminOnly1234"
+- and upload your api key and pdf for good going
+
 
 1. Clone the repository: `git clone https://github.com/your-username/reactnode-ai-interviewer.git`
 2. Install the required dependencies: `npm install`
