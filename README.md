@@ -23,11 +23,10 @@ https://youtu.be/21gxvsOKagU
 - **Seamless OpenAI API Integration:** Powered by OpenAI's API, ReactNode AI Interviewer integrates into your technical interview workflow effortlessly.
 
 ## Note
-- I have used GPT 3.5 turbo model for my testing so due to its limitaion I have prompted it to ask only 3 questions after that it repeats itself,due to lack of tokens
-- To make it work more powerfully we can use GPT 4 to improve its operational areas.
-- Also I have not used any database as I haven't feel it to be important , but in future feature I am planning to have a Object relational database integrated in it.
-
-
+- During testing, I utilized the GPT-3.5 turbo model, which has limitations in terms of available tokens. As a result, I constrained the AI to ask only 3 questions to avoid running out of tokens and having it repeat itself.
+- To enhance its performance and capabilities, future iterations could benefit from utilizing GPT-4, a more powerful language model.
+- Additionally, I haven't integrated any database in the current version as I did not deem it necessary. However, in future updates, I plan to incorporate an Object-Relational Database to enhance data management and storage capabilities.
+  
 ## Technologies Used
 
 - Node.js: Backend server for handling API requests and business logic.
