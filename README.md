@@ -1,11 +1,8 @@
 # Querell-AI 🐿️
 
-
-![ReactNode AI Interviewer](your-image-url.png)
-
 ## Introduction
 
-Welcome to ReactNode AI Interviewer, an advanced chat bot powered by the formidable OpenAI API! This AI interviewer is designed to revolutionize technical interviews in the world of React and Node.js development.
+Welcome to ReactNode AI Interviewer, an advanced chatbot powered by the formidable OpenAI API! This AI interviewer is designed to revolutionize technical interviews in the world of React and Node.js development.
 
 https://youtu.be/21gxvsOKagU
 
@@ -27,6 +24,13 @@ https://youtu.be/21gxvsOKagU
 
 ![ReactNode AI Interviewer Demo](demo.gif)
 
+## Technologies Used
+
+- Node.js: Backend server for handling API requests and business logic.
+- React.js: Frontend framework for building the user interface.
+- Google Cloud Functions: Serverless function deployment for scalable backend services.
+- Docker: Containerization technology for easy deployment and management.
+
 ## Getting Started
 
 Follow these steps to get started with ReactNode AI Interviewer:
@@ -39,15 +43,27 @@ npm start
 cd ..
 npm run dev
 ```
-- make sure to go to /pdf end point weather it is in localhost or vercel
-- then input admin password as "AdminOnly1234"
-- and upload your api key and pdf for good going
 
+- Make sure to go to the `/pdf` endpoint, whether it is in localhost or Vercel.
+- Then input the admin password as "AdminOnly1234".
+- Upload your API key and PDF for smooth operation.
 
 1. Clone the repository: `git clone https://github.com/your-username/reactnode-ai-interviewer.git`
 2. Install the required dependencies: `npm install`
 3. Run the application: `npm start`
 4. Access the ReactNode AI Interviewer at `http://localhost:3000`
+
+## Docker Deployment
+
+This project is also Dockerized, allowing easy deployment in containers. To run the application using Docker, follow these steps:
+
+1. Make sure you have Docker installed and running on your system.
+2. Build the Docker image: `docker build -t reactnode-ai-interviewer .`
+3. Run the Docker container: `docker run -p 3000:3000 reactnode-ai-interviewer`
+
+## Deployed on Google Cloud Functions
+
+The backend Node.js code has been deployed on Google Cloud Functions to provide a scalable and serverless environment. The Docker container is used to deploy the application on Google Cloud Functions.
 
 ## Contributing
 
@@ -65,7 +81,7 @@ If you encounter any issues or have questions, feel free to [open an issue](http
 
 ## Future Features Plans
 
-- we are planning to add a feature of uploading resume and taking interviews based on it.
+- We are planning to add a feature of uploading a resume and taking interviews based on it.
 
 ## License
 
@@ -74,7 +90,5 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 Let ReactNode AI Interviewer elevate your tech interviews to a whole new level! 🚀 Join the tech hiring revolution with us!
-
-![ReactNode AI Interviewer](your-image-url.png)
 
 [Follow us on Twitter](https://twitter.com/reactnode_ai) | [Visit our Website](https://www.reactnodeai-interviewer.com)
