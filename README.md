@@ -4,6 +4,8 @@
 
 Welcome to ReactNode AI Interviewer, an advanced chatbot powered by the formidable OpenAI API! This AI interviewer is designed to revolutionize technical interviews in the world of React and Node.js development.
 
+## Demo
+
 https://youtu.be/21gxvsOKagU
 
 ## Features
@@ -20,9 +22,11 @@ https://youtu.be/21gxvsOKagU
 
 - **Seamless OpenAI API Integration:** Powered by OpenAI's API, ReactNode AI Interviewer integrates into your technical interview workflow effortlessly.
 
-## Demo
+## Note
+- I have used GPT 3.5 turbo model for my testing so due to its limitaion I have prompted it to ask only 3 questions after that it repeats itself,due to lack of tokens
+- To make it work more powerfully we can use GPT 4 to improve its operational areas.
+- Also I have not used any database as I haven't feel it to be important , but in future feature I am planning to have a Object relational database integrated in it.
 
-![ReactNode AI Interviewer Demo](demo.gif)
 
 ## Technologies Used
 
