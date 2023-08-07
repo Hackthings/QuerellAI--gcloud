@@ -73,11 +73,6 @@ The backend Node.js code has been deployed on Google Cloud Functions to provide 
 
 - We are planning to add a feature of uploading a resume and taking interviews based on it.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 Let Querell-AI Interviewer elevate your tech interviews to a whole new level! 🚀 Join the tech hiring revolution with us!
 
