@@ -6,7 +6,7 @@ Welcome to Querell-AI Interviewer, an advanced chatbot powered by the formidable
 
 ## Demo
 
-https://youtu.be/21gxvsOKagU
+https://youtu.be/Tt1qdpOpB8I
 
 ## Features
 
