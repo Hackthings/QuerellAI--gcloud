@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to ReactNode AI Interviewer, an advanced chatbot powered by the formidable OpenAI API! This AI interviewer is designed to revolutionize technical interviews in the world of React and Node.js development.
+Welcome to Querell-AI Interviewer, an advanced chatbot powered by the formidable OpenAI API! This AI interviewer is designed to revolutionize technical interviews in the world of React and Node.js development.
 
 ## Demo
 
@@ -14,7 +14,7 @@ https://youtu.be/21gxvsOKagU
 
 - **Customizable Technical Evaluations:** Tailor the interview process based on specific React and Node.js roles and expertise levels.
 
-- **Extensive Knowledge Repository:** ReactNode AI Interviewer covers everything from React components and hooks to server-side rendering and asynchronous programming.
+- **Extensive Knowledge Repository:** Querell-AI Interviewer covers everything from React components and hooks to server-side rendering and asynchronous programming.
 
 - **Insightful Analysis & Reports:** Receive detailed reports highlighting candidates' strengths, areas for improvement, and overall performance.
 
@@ -36,7 +36,7 @@ https://youtu.be/21gxvsOKagU
 
 ## Getting Started
 
-Follow these steps to get started with ReactNode AI Interviewer:
+Follow these steps to get started with Querell-AI Interviewer:
 
 ```bash
 npm install
@@ -68,19 +68,6 @@ This project is also Dockerized, allowing easy deployment in containers. To run 
 
 The backend Node.js code has been deployed on Google Cloud Functions to provide a scalable and serverless environment. The Docker container is used to deploy the application on Google Cloud Functions.
 
-## Contributing
-
-We welcome contributions from the community! To contribute to ReactNode AI Interviewer, follow these steps:
-
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature-name`
-3. Make your changes and commit them: `git commit -m "Add some feature"`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
-## Support
-
-If you encounter any issues or have questions, feel free to [open an issue](https://github.com/your-username/reactnode-ai-interviewer/issues). We'll be happy to assist you!
 
 ## Future Features Plans
 
@@ -92,6 +79,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Let ReactNode AI Interviewer elevate your tech interviews to a whole new level! 🚀 Join the tech hiring revolution with us!
+Let Querell-AI Interviewer elevate your tech interviews to a whole new level! 🚀 Join the tech hiring revolution with us!
 
-[Follow us on Twitter](https://twitter.com/reactnode_ai) | [Visit our Website](https://www.reactnodeai-interviewer.com)
