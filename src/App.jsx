@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   const [messages, setMessages] = useState([
     {
-      role: 'assistant',
-      content: 'Hi, start by giving a brief introduction about yourself.',
+      role: "assistant",
+      content: "Hi, start by giving a brief introduction about yourself.",
     },
   ]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [speechRecognitionSupported, setSpeechRecognitionSupported] =
     useState(false);
@@ -18,17 +18,17 @@ function App() {
   const recognitionRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
     let synth = window.speechSynthesis;
     let utterance = new SpeechSynthesisUtterance(
-      'Hi, start by giving a brief introduction about yourself.'
+      "Hi, start by giving a brief introduction about yourself."
     );
     let femaleVoices = synth
       .getVoices()
-      .filter((voice) => voice.gender === 'female');
+      .filter((voice) => voice.gender === "female");
     utterance.voice = femaleVoices[0];
     synth.speak(utterance);
 
@@ -42,7 +42,7 @@ function App() {
     scrollToBottom();
 
     // check if speech recognition is supported by the browser
-    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+    if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
       setSpeechRecognitionSupported(true);
     }
   }, [messages]);
@@ -51,7 +51,7 @@ function App() {
     // prevent empty messages
     if (!inputValue) return;
 
-    const newMessage = { content: inputValue, role: 'user' };
+    const newMessage = { content: inputValue, role: "user" };
     setMessages([...messages, newMessage]); // add user content here
 
     const jsonVal = {
@@ -62,28 +62,40 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ messages: [...messages, newMessage] }), // Send the content history as part of the request
-      });
+      const response = await fetch(
+        "https://routbhai-dgj4adfq5q-ue.a.run.app/chat",
+        // "http:localhost:3000/chat",
+
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ messages: [...messages, newMessage] }), // Send the content history as part of the request
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Failed to send message history to OpenAI SDK backend.');
+        throw new Error(
+          "Failed to send message history to OpenAI SDK backend."
+        );
       }
 
       const responseData = await response.json();
 
-      const botMessage = { content: responseData.botMessage, role: 'assistant' };
+      const botMessage = {
+        content: responseData.botMessage,
+        role: "assistant",
+      };
       setLoading(false);
       setMessages([...messages, newMessage, botMessage]); // add assistant content here
 
       // speak the assistant content
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(responseData.botMessage);
-      const femaleVoices = synth.getVoices().filter((voice) => voice.gender === 'female');
+      const femaleVoices = synth
+        .getVoices()
+        .filter((voice) => voice.gender === "female");
       utterance.voice = femaleVoices[0];
       synth.speak(utterance);
     } catch (error) {
@@ -92,9 +104,9 @@ function App() {
       // Handle any error or display an error content to the user
     }
 
-    setInputValue('');
+    setInputValue("");
   };
-  
+
   const startSpeechRecognition = () => {
     if (isListening) {
       recognitionRef.current.stop();
@@ -125,7 +137,7 @@ function App() {
         {messages.map((message, index) => (
           <div
             className={`message ${
-              message.role === 'user' ? 'user-message' : 'bot-message'
+              message.role === "user" ? "user-message" : "bot-message"
             }`}
             key={index}
           >
@@ -165,8 +177,8 @@ function App() {
             className="microphone-button"
             onClick={startSpeechRecognition}
             style={{
-              display: speechRecognitionSupported ? 'inline' : 'none',
-              color: isListening ? 'red' : 'black',
+              display: speechRecognitionSupported ? "inline" : "none",
+              color: isListening ? "red" : "black",
             }}
           >
             <i className="fa fa-microphone" aria-hidden="true"></i>
@@ -178,4 +190,3 @@ function App() {
 }
 
 export default App;
-

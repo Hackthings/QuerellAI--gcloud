@@ -1,43 +1,48 @@
-import React, { useState } from 'react';
-import './PDFUpload.css';
+import React, { useState } from "react";
+import "./PDFUpload.css";
 
 function PDFUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(true);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [showSuccessNotification, setShowSuccessNotification] = useState(false);
 
-  const [apiKey, setApiKey] = useState('');
+  const [apiKey, setApiKey] = useState("");
 
   // Function to handle API key submission
   const handleApiKeySubmit = async (e) => {
     e.preventDefault();
     if (apiKey) {
       try {
-        const response = await fetch('http://localhost:3000/get-api-key', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ apiKey }),
-        });
+        const response = await fetch(
+          "https://routbhai-dgj4adfq5q-ue.a.run.app/get-api-key",
+          // "http:localhost:3000/get-api-key",
+
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ apiKey }),
+          }
+        );
 
         if (response.ok) {
-          console.log('API key sent successfully');
+          console.log("API key sent successfully");
           // Optionally, you can show a success message here
         } else {
-          console.log('Failed to send API key');
+          console.log("Failed to send API key");
           // Optionally, you can show an error message here
         }
       } catch (error) {
-        console.error('Error sending API key:', error);
+        console.error("Error sending API key:", error);
       }
 
       // Clear the API key input field after sending (optional)
-      setApiKey('');
+      setApiKey("");
     } else {
-      alert('Please enter the API key.');
+      alert("Please enter the API key.");
     }
   };
 
@@ -51,39 +56,44 @@ function PDFUpload() {
     if (selectedFile) {
       try {
         const formData = new FormData();
-        formData.append('pdfFile', selectedFile);
+        formData.append("pdfFile", selectedFile);
 
-        const response = await fetch('http://localhost:3000/read-pdf', {
-          method: 'POST',
-          body: formData,
-        });
+        const response = await fetch(
+          "https://routbhai-dgj4adfq5q-ue.a.run.app/read-pdf",
+          // "http:localhost:3000/read-pdf",
+
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         if (response.ok) {
-          console.log('File uploaded and read successfully');
+          console.log("File uploaded and read successfully");
           setShowSuccessNotification(true); // Show success notification
         } else {
-          console.log('Failed to upload file');
+          console.log("Failed to upload file");
         }
       } catch (error) {
-        console.error('Error uploading file:', error);
+        console.error("Error uploading file:", error);
       }
 
       // Clear the file input after upload (optional)
       setSelectedFile(null);
     } else {
-      alert('Please select a PDF file to upload.');
+      alert("Please select a PDF file to upload.");
     }
   };
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
     // Replace 'your-admin-password' with the actual admin password
-    if (password === 'AdminOnly1234') {
+    if (password === "AdminOnly1234") {
       setIsPasswordModalOpen(false);
       setIsAdmin(true);
     } else {
-      alert('Invalid password. Please try again.');
-      setPassword('');
+      alert("Invalid password. Please try again.");
+      setPassword("");
     }
   };
 
