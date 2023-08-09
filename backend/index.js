@@ -2,6 +2,12 @@ const express = require("express");
 const app = express();
 const multer = require("multer"); // To handle file uploads
 const pdfReader = require("./pdf"); // Import the PDF reading function
+const {
+  storeChatHistory,
+  fetchChatHistory,
+  createUser,
+  fetchAll,
+} = require("./db");
 const { Configuration, OpenAIApi } = require("openai");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -87,6 +93,84 @@ app.post("/get-api-key", (req, res) => {
     res.status(200).json({ message: "API key received successfully." });
   } catch (error) {
     console.error("Error in /get-api-key endpoint:", error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/createUser", async (req, res) => {
+  try {
+    const { userName } = req.body;
+    if (!userName) {
+      return res.status(400).json({ error: "Username is required." });
+    }
+    const result = await createUser(userName);
+
+    if (!result) {
+      return res.status(400).json({ error: "Username already exists." });
+    }
+    console.log(result);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error in /createUser endpoint:", error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/store", (req, res) => {
+  try {
+    const { userId, description, chatHistory } = req.body;
+
+    if (!userId || !description || !chatHistory) {
+      return res
+        .status(400)
+        .json({ error: "userId, description and chatHistory are required." });
+    }
+
+    storeChatHistory(userId, description, chatHistory)
+      .then((newChatHistory) => {
+        res.status(200).json({ message: "Chat history stored successfully." });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: "Error storing chat history." });
+      });
+  } catch (error) {
+    console.error("Error in /store endpoint:", error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/content", (req, res) => {
+  try {
+    const { userId } = req.body;
+    fetchChatHistory(userId)
+      .then((chatHistory) => {
+        console.log("Chat history retrieved:", chatHistory);
+        res.status(200).json({ chatHistory });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: "Error fetching chat history." });
+      });
+  } catch (error) {
+    console.error("Error in /content endpoint:", error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/getall", (req, res) => {
+  try {
+    fetchAll()
+      .then((chatHistory) => {
+        console.log("Chat history retrieved:", chatHistory);
+        res.status(200).json({ chatHistory });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: "Error fetching chat history." });
+      });
+  } catch (error) {
+    console.error("Error in /all endpoint:", error.message);
     res.status(500).send("Internal Server Error");
   }
 });

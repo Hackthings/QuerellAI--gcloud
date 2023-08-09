@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./PDFUpload.css";
+import { useNavigate } from "react-router-dom";
 
 function PDFUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -7,7 +8,8 @@ function PDFUpload() {
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(true);
   const [password, setPassword] = useState("");
   const [showSuccessNotification, setShowSuccessNotification] = useState(false);
-
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   const [apiKey, setApiKey] = useState("");
 
   // Function to handle API key submission
@@ -30,6 +32,7 @@ function PDFUpload() {
 
         if (response.ok) {
           console.log("API key sent successfully");
+          setShow(true);
           // Optionally, you can show a success message here
         } else {
           console.log("Failed to send API key");
@@ -106,16 +109,19 @@ function PDFUpload() {
   };
 
   return (
+    <div className="main" >
     <div className="pdf-upload-container">
-      <h2>Upload PDF File</h2>
-      {isAdmin && ( // Render the upload button only if the user is an admin
-        <form onSubmit={handleFileUpload}>
-          <input type="file" accept=".pdf" onChange={handleFileChange} />
-          <button type="submit">Upload</button>
-        </form>
+      {isAdmin && show && (
+        <div className="pdfInput">
+          <h2>Upload PDF File</h2>
+          <form onSubmit={handleFileUpload}>
+            <input type="file" accept=".pdf" onChange={handleFileChange} />
+            <button type="submit">Upload</button>
+          </form>
+        </div>
       )}
 
-      {isAdmin && (
+      {isAdmin && !show && (
         <div className="api-key-popup">
           <h2>Enter OpenAI API Key</h2>
           <form onSubmit={handleApiKeySubmit}>
@@ -149,13 +155,15 @@ function PDFUpload() {
       {/* Success notification */}
       {showSuccessNotification && (
         <div className="success-notification">
-          <p>PDF file uploaded and read successfully!</p>
-          <button onClick={() => setShowSuccessNotification(false)}>
-            Close
+          <p
+          style={{marginBottom: 2}}
+          >PDF file uploaded and read successfully!</p>
+          <button onClick={() => navigate(-1)}>
+            Go to Home
           </button>
         </div>
       )}
-    </div>
+    </div></div>
   );
 }
 
