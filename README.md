@@ -22,10 +22,12 @@ https://youtu.be/Tt1qdpOpB8I
 
 - **Seamless OpenAI API Integration:** Powered by OpenAI's API, ReactNode AI Interviewer integrates into your technical interview workflow effortlessly.
 
+- **Admin Panel - Read All Responses:** New feature! Access the admin panel to read all candidate responses for thorough evaluation.
+
 ## Note
 - During testing, I utilized the GPT-3.5 turbo model, which has limitations in terms of available tokens. As a result, I constrained the AI to ask only 3 questions to avoid running out of tokens and having it repeat itself.
 - To enhance its performance and capabilities, future iterations could benefit from utilizing GPT-4, a more powerful language model.
-- Additionally, I haven't integrated any database in the current version as I did not deem it necessary. However, in future updates, I plan to incorporate an Object-Relational Database to enhance data management and storage capabilities.
+
   
 ## Technologies Used
 
@@ -33,6 +35,9 @@ https://youtu.be/Tt1qdpOpB8I
 - React.js: Frontend framework for building the user interface.
 - Google Cloud Functions: Serverless function deployment for scalable backend services.
 - Docker: Containerization technology for easy deployment and management.
+- PostgreSQL: Object-Relational Database for data management and storage.
+- NeonDB: Incorporating NeonDB for enhanced data management capabilities.
+- Prisma: Modern database toolkit for ORM and query building.
 
 ## Getting Started
 
