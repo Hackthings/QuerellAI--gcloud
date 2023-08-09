@@ -2,23 +2,61 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "./NameInputComponent.css"; // Import your custom CSS for styling
+import { useUserId } from "./context/userId";
 
 function NameInputComponent() {
   const [name, setName] = useState("");
+  const [disable, setDisable] = useState(false);
   const history = useNavigate();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
-  const redirectToPage = (path) => {
+  const createUser = async (name) => {
+    try {
+      const response = await fetch("http://localhost:8080/createUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userName: name,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create user");
+      }
+
+      return response.json();
+    } catch (error) {
+      throw new Error("Error creating user: " + error.message);
+    }
+  };
+
+  const { setSelectedUserId } = useUserId();
+  const redirectToPage = async (path) => {
+    setDisable(true);
     if (path === "chat" && name === "") {
       toast.error("Enter your name");
     } else if (name.trim() !== "" && path === "chat") {
-      toast.success("Fetching...");
-      history(`/${path}?name=${encodeURIComponent(name)}`);
+      try {
+        const newUser = await toast.promise(createUser(name), {
+          loading: "Creating user...",
+          success: "User created successfully!",
+          error: "Failed to create user",
+        });
+        if (newUser) {
+          setDisable(false);
+
+          setSelectedUserId(newUser);
+        }
+        history(`/${path}?name=${encodeURIComponent(name)}`);
+      } catch (error) {
+        console.error(error);
+      }
     } else if (path === "pdf") {
-      toast.success("Fetching...");
       history(`/${path}`);
     }
   };
@@ -44,10 +82,18 @@ function NameInputComponent() {
           value={name}
           onChange={handleNameChange}
         />
-        <button className="button" onClick={() => redirectToPage("chat")}>
+        <button
+          className="button"
+          disabled={disable}
+          onClick={() => redirectToPage("chat")}
+        >
           Start Interview
         </button>
-        <button className="button" onClick={() => redirectToPage("pdf")}>
+        <button
+          className="button"
+          disabled={disable}
+          onClick={() => redirectToPage("pdf")}
+        >
           Go to Admin Page
         </button>
       </div>

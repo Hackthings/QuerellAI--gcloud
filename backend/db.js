@@ -51,13 +51,53 @@ async function fetchChatHistory(userId) {
   }
 }
 
-async function fetchAll(userId) {
+async function fetchAll() {
   try {
-    const chatHistory = await prisma.chatHistory.findMany({})
+    const chatHistory = await prisma.chatHistory.findMany({
+      select: {
+        userId: true,
+        createdAt: true
+      },
+    });
 
-    return chatHistory;
+    return chatHistory.map((item) => item.userId);
   } catch (error) {
-    throw new Error("Error fetching chat history: " + error.message);
+    throw new Error("Error fetching user IDs: " + error.message);
+  }
+}
+
+async function fetchAll() {
+  try {
+    const chatHistory = await prisma.chatHistory.findMany({
+      select: {
+        userId: true,
+        createdAt: true,
+      },
+    });
+
+    const userIds = chatHistory.map((item) => item.userId);
+    const users = await prisma.user.findMany({
+      where: {
+        id: {
+          in: userIds,
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+      },
+    });
+
+    return chatHistory.map((item) => {
+      const user = users.find((user) => user.id === item.userId);
+      return {
+        userId: user.id,
+        username: user.name,
+        createdAt: item.createdAt,
+      };
+    });
+  } catch (error) {
+    throw new Error("Error fetching data: " + error.message);
   }
 }
 

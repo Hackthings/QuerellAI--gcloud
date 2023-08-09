@@ -15,6 +15,7 @@ dotenv.config();
 
 let openai = null;
 let pdfContent = "";
+const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(
@@ -28,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(8080, () => console.log("Server running on port 8080"));
+app.listen(port, () => console.log("Server running on port 8080"));
 
 app.post("/read-pdf", upload.single("pdfFile"), async (req, res) => {
   try {
@@ -140,7 +141,7 @@ app.post("/store", (req, res) => {
   }
 });
 
-app.get("/content", (req, res) => {
+app.post("/content", (req, res) => {
   try {
     const { userId } = req.body;
     fetchChatHistory(userId)

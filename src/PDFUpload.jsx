@@ -49,6 +49,10 @@ function PDFUpload() {
     }
   };
 
+  const redirectToHistory = () => {
+    navigate("/history"); // Redirect to localhost:3000/history
+  };
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
@@ -109,61 +113,69 @@ function PDFUpload() {
   };
 
   return (
-    <div className="main" >
-    <div className="pdf-upload-container">
-      {isAdmin && show && (
-        <div className="pdfInput">
-          <h2>Upload PDF File</h2>
-          <form onSubmit={handleFileUpload}>
-            <input type="file" accept=".pdf" onChange={handleFileChange} />
-            <button type="submit">Upload</button>
-          </form>
-        </div>
-      )}
+    <div className="main">
+      <div className="pdf-upload-container">
+        {isAdmin && show && (
+          <div className="pdfInput">
+            <h2>Upload PDF File</h2>
+            <form onSubmit={handleFileUpload}>
+              <input type="file" accept=".pdf" onChange={handleFileChange} />
+              <button type="submit">Upload</button>
+            </form>
+          </div>
+        )}
 
-      {isAdmin && !show && (
-        <div className="api-key-popup">
-          <h2>Enter OpenAI API Key</h2>
-          <form onSubmit={handleApiKeySubmit}>
-            <input
-              type="text"
-              placeholder="Enter API key..."
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-            />
-            <button type="submit">Send Key</button>
-          </form>
-        </div>
-      )}
+        {isAdmin && !show && (
+          <div className="api-key-popup">
+            <h2>Enter OpenAI API Key</h2>
+            <form onSubmit={handleApiKeySubmit}>
+              <input
+                type="text"
+                placeholder="Enter API key..."
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+              />
+              <button type="submit">Send Key</button>
+            </form>
+          </div>
+        )}
 
-      {/* Password PopUp */}
-      {isPasswordModalOpen && (
-        <div className="password-popup">
-          <h2>Enter Admin Password</h2>
-          <form onSubmit={handlePasswordSubmit}>
-            <input
-              type="password"
-              placeholder="Enter password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit">Login</button>
-          </form>
-        </div>
-      )}
+        {isAdmin && (
+          <div className="api-key-popup">
+            <h2>See History</h2>
+            <form onSubmit={redirectToHistory}>
+              <button type="submit">History</button>
+            </form>
+          </div>
+        )}
 
-      {/* Success notification */}
-      {showSuccessNotification && (
-        <div className="success-notification">
-          <p
-          style={{marginBottom: 2}}
-          >PDF file uploaded and read successfully!</p>
-          <button onClick={() => navigate(-1)}>
-            Go to Home
-          </button>
-        </div>
-      )}
-    </div></div>
+        {/* Password PopUp */}
+        {isPasswordModalOpen && (
+          <div className="password-popup">
+            <h2>Enter Admin Password</h2>
+            <form onSubmit={handlePasswordSubmit}>
+              <input
+                type="password"
+                placeholder="Enter password..."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        )}
+
+        {/* Success notification */}
+        {showSuccessNotification && (
+          <div className="success-notification">
+            <p style={{ marginBottom: 2 }}>
+              PDF file uploaded and read successfully!
+            </p>
+            <button onClick={() => navigate(-1)}>Go to Home</button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 

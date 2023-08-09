@@ -5,16 +5,23 @@ import App from "./App";
 import Intro from "./Intro";
 import PDFUpload from "./PDFUpload";
 import { Toaster } from "react-hot-toast";
+import ChatHistoryPage from "./ChatHistory";
+import Chat from "./chat";
+import { UserIdProvider } from "./context/userId";
 
 ReactDOM.render(
   <>
     <Toaster />
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Intro />} />
-        <Route path="/chat" element={<App />} />
-        <Route path="/pdf" element={<PDFUpload />} />
-      </Routes>
+      <UserIdProvider>
+        <Routes>
+          <Route path="/" element={<Intro />} />
+          <Route path="/chat" element={<App />} />
+          <Route path="/chat/:userId" element={<App />} />
+          <Route path="/pdf" element={<PDFUpload />} />
+          <Route path="/history" element={<ChatHistoryPage />} />
+        </Routes>
+      </UserIdProvider>
     </BrowserRouter>
   </>,
   document.getElementById("root")
