@@ -12,7 +12,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
-
+  
 let openai = null;
 let pdfContent = "";
 const port = process.env.PORT || 8080;

@@ -18,7 +18,7 @@ function PDFUpload() {
     if (apiKey) {
       try {
         const response = await fetch(
-          "https://routbhai-dgj4adfq5q-ue.a.run.app/get-api-key",
+          "https://dbfix-dgj4adfq5q-ue.a.run.app/get-api-key",
           // "http:localhost:3000/get-api-key",
 
           {
@@ -66,7 +66,7 @@ function PDFUpload() {
         formData.append("pdfFile", selectedFile);
 
         const response = await fetch(
-          "https://routbhai-dgj4adfq5q-ue.a.run.app/read-pdf",
+          "https://dbfix-dgj4adfq5q-ue.a.run.app/read-pdf",
           // "http:localhost:3000/read-pdf",
 
           {
