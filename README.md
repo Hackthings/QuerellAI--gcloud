@@ -40,6 +40,7 @@ https://youtu.be/Tt1qdpOpB8I
 - PostgreSQL: Object-Relational Database for data management and storage.
 - NeonDB: Incorporating NeonDB for enhanced data management capabilities.
 - Prisma: Modern database toolkit for ORM and query building.
+- OpenAI API: Powering the advanced chatbot capabilities, providing a seamless interview experience.
 
 ## Getting Started
 
