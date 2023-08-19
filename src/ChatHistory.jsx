@@ -21,6 +21,8 @@ function ChatHistoryPage() {
         const fetchMsg = async () => {
           try {
             const response = await fetch("https://dbfix-dgj4adfq5q-ue.a.run.app/getAll");
+            // localhost:8080/user/getAll
+
 
             if (!response.ok) {
               throw new Error("Failed to create user");

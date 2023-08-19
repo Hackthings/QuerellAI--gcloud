@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import "./App.css";
-import Chat from "./Chat";
+import Chat from "./ChatFile";
 import { useLocation } from "react-router-dom";
 
 function App() {

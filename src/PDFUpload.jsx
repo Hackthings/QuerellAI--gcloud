@@ -19,7 +19,7 @@ function PDFUpload() {
       try {
         const response = await fetch(
           "https://dbfix-dgj4adfq5q-ue.a.run.app/get-api-key",
-          // "http:localhost:3000/get-api-key",
+          // "http:localhost:8080/get-api-key",
 
           {
             method: "POST",
@@ -67,7 +67,7 @@ function PDFUpload() {
 
         const response = await fetch(
           "https://dbfix-dgj4adfq5q-ue.a.run.app/read-pdf",
-          // "http:localhost:3000/read-pdf",
+          // "http:localhost:8080/pdf/read-pdf",
 
           {
             method: "POST",

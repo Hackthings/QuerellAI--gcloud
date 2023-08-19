@@ -6,7 +6,7 @@ import Intro from "./Intro";
 import PDFUpload from "./PDFUpload";
 import { Toaster } from "react-hot-toast";
 import ChatHistoryPage from "./ChatHistory";
-import Chat from "./Chat";
+import  Chat  from "./ChatFile";
 import { UserIdProvider } from "./context/userId";
 
 ReactDOM.render(

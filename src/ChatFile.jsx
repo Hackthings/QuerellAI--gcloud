@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { useUserId } from "./context/userId";
 import { toast } from "react-hot-toast";
-
 function Chat() {
   const [messages, setMessages] = useState([
     {
@@ -61,7 +60,7 @@ function Chat() {
     try {
       const response = await fetch(
         "https://dbfix-dgj4adfq5q-ue.a.run.app/chat",
-        // "http:localhost:3000/chat",
+        // "http:localhost:8080/chat/chat",
 
         {
           method: "POST",
@@ -107,6 +106,7 @@ function Chat() {
   const fetchMsg = async (userId) => {
     try {
       const response = await fetch("https://dbfix-dgj4adfq5q-ue.a.run.app/content", {
+        // http://localhost:8080/history/content"
         method: "POST",
         headers: {
           "Content-Type": "application/json",
