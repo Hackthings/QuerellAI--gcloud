@@ -60,7 +60,7 @@ function Chat() {
 
     try {
       const response = await fetch(
-        "https://dbfix-dgj4adfq5q-ue.a.run.app/chat",
+        "http:localhost:3000/chat",
         // "http:localhost:3000/chat",
 
         {
@@ -106,7 +106,7 @@ function Chat() {
 
   const fetchMsg = async (userId) => {
     try {
-      const response = await fetch("https://dbfix-dgj4adfq5q-ue.a.run.app/content", {
+      const response = await fetch("http:localhost:3000/content", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +166,7 @@ function Chat() {
   const storeMessage = () => {
     const sendMsg = async (userId) => {
       try {
-        const response = await fetch("https://dbfix-dgj4adfq5q-ue.a.run.app/store", {
+        const response = await fetch("http:localhost:3000/store", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
