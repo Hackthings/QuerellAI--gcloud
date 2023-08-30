@@ -83,4 +83,3 @@ The backend Node.js code has been deployed on Google Cloud Functions to provide 
 
 
 Let Querell-AI Interviewer elevate your tech interviews to a whole new level! 🚀 Join the tech hiring revolution with us!
-
